@@ -93,7 +93,7 @@ workbook.xlsx.readFile("./ProjectOne.xlsx")
         }
 
         if(newRow.cellCount>0){
-            log( chalk.green("\nSUCCESSFULLY ROWS INSERTED "+args[2]+"..."));
+            log( chalk.green("\nSUCCESSFULLY ROWS INSERTED "+args[2]+"... for "+result["State Case No."]));
             workbook.xlsx.writeFile('ProjectOne.xlsx')
         }
 });
