@@ -3,6 +3,8 @@ var fs = require('fs');
 const chalk = require('chalk');
 const log = console.log;
 
+const args = process.argv;
+
 var headRow;
 var data;
 
@@ -83,9 +85,15 @@ workbook.xlsx.readFile("./ProjectOne.xlsx")
             }
         }
 
-        const newRow = worksheet.insertRow(2,result)
+        // FIRST ROW
+        const newRow = worksheet.insertRow(2,result);
+        // remaining rows for sequence
+        for(var i=1;i<args[2];i++){
+            worksheet.insertRow(2,result)
+        }
+
         if(newRow.cellCount>0){
-            log( chalk.green("\nSUCCESSFULLY ROW INSERTED..."));
+            log( chalk.green("\nSUCCESSFULLY ROWS INSERTED "+args[2]+"..."));
             workbook.xlsx.writeFile('ProjectOne.xlsx')
         }
 });
