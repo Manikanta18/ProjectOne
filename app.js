@@ -18,10 +18,15 @@ function readTxt() {
     
         let obj = {};
         let splitted = data.toString().split("\n");
-       
+
         for (let i = 0; i<splitted.length; i++) {
-            let splitLine = splitted[i].split(":");
-            obj[splitLine[0].trim()] = splitLine[1].trim();
+            let splitLine = splitted[i].trim().split('\t');
+            for(let j = 0; j<splitLine.length; j+=2){
+                if(splitLine[j] != undefined){
+                    value = (splitLine[j+1] != undefined) ? splitLine[j+1] : ""
+                    obj[splitLine[j].replace(':','')] = value
+                }
+            }
         }
         return obj
     
